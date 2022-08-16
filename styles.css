@@ -153,9 +153,7 @@ text-decoration: none;
 }
 
 .nav {
-    transition-property: color;
-    transition-duration: 250ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav:hover,
@@ -165,6 +163,7 @@ text-decoration: none;
 
 .portfolio-icon::after {
     content: "";
+    display: flex;
     width: 78px;
     height: 4px;
     background-size: contain;
@@ -172,20 +171,9 @@ text-decoration: none;
     background-image: url("./images/hover-potfolio.png");
     position: absolute;
     bottom: 0;
-    display: flex;
-    align-items: center;
-    opacity: 0;
+    left: 0;
 
-    transition-property: opacity;
-    transition-duration: 250ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-}
-
-.portfolio-icon:hover::after {
-    opacity: 1;
-}
-
+ }
 
 .studio-icon::after {
     content: "";
@@ -196,19 +184,9 @@ text-decoration: none;
     background-image: url("./images/hover-studio.png");
     position: absolute;
     bottom: 0;
+    left: 0;
     display: flex;
-    align-items: center;
-    opacity: 0;
-
-    transition-property: opacity;
-    transition-duration: 250ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-.studio-icon:hover::after {
-    opacity: 1;
-}
-
 
 .current-icon-header-portfolio {
     position: absolute;
@@ -240,6 +218,14 @@ color: var(--main-text-color);
     margin-right: 10px;
  }
 
+ .contact.link {
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+ }
+
+ .contact.link .header-icon {
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+ }
+ 
  .contact.link:hover .header-icon,
  .contact.link:focus .header-icon {
     fill: var(--accent-color);
@@ -292,7 +278,8 @@ color: var(--accent-color);
 
 }
 
-.button-hero {
+.button-hero {  
+  display: inline-flex;
   background-color: var(--accent-color);
   padding: 10px 32px;
   min-width: 200px;
@@ -309,8 +296,6 @@ color: var(--accent-color);
   color: #FFFFFF;
 
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-
 }
 
 .button-hero:hover,
@@ -523,21 +508,21 @@ color: var(--main-text-color);
 
 /* button */
 .filter {
-font-family: inherit;
-font-weight: 500;
-font-size: 16px;
-line-height: 1.62;
-text-align: center;
-letter-spacing: 0.03em;
-color: var(--title-text-color);
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.62;
+    text-align: center;
+    letter-spacing: 0.03em;
+    color: var(--title-text-color);
 
-background-color: var(--primary-color);
-padding: 6px 22px;
-border-radius: 4px;
-cursor: pointer;
+    background-color: var(--primary-color);
+    padding: 6px 22px;
+    border-radius: 4px;
+    cursor: pointer;
 
-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filter:hover,
@@ -549,9 +534,9 @@ color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 /* Project */
 
 .items-project {
-display: flex;
-flex-wrap: wrap;
-margin: -18px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -18px;
 }
 
 .item-project {
@@ -574,32 +559,28 @@ margin: -18px;
     display: flex;
     /* justify-content: center; */
     align-items: center;
+    overflow: hidden;
+    
 }
 
-.portfolio-thumb::before {
-    display: inline-block;
+.overlay-portfolio {
     position: absolute;
-    content: "";
     width: 100%;
     height: 100%;
     background-color: rgba(33, 150, 243, 0.9);
 
-    opacity: 0;
+    transform: translateY(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.portfolio-thumb:hover::before {
-    opacity: 1;
-}
-
-
-.portfolio-thumb:hover .porfolio-text-card {
-    opacity: 1;
+.item-project:hover .overlay-portfolio {
+    transform: translateY(0%);
 }
 
 .porfolio-text-card {
     position: absolute;
     display: flex;
-    opacity: 0;
+    /* opacity: 0; */
 
     padding: 63px 24px;
 
@@ -721,6 +702,9 @@ transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1)
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
+    
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
 }
 
 .backdrop.is-hidden {
@@ -728,10 +712,17 @@ transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1)
     pointer-events: none;
 }
 
+.backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
 .modal {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     background-color: rgba(255, 255, 255, 1);
+    width: 528px;
+    height: 581px;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
