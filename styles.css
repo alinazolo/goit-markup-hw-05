@@ -728,3 +728,27 @@ transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1)
     transform: translate(-50%, -50%) scale(1);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.modal-check-text {
+    color:#8E8F99;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    display: flex;
+    align-items: center;
+}
+
+.modal-check-link {
+    color: #4D5AE5;
+}
+
+.modal-check-text span{
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgba(46, 47, 66, 0.40);
+border-radius: 2px;
+margin-right: 12px;
+}
+
+.modal-check:checked + .modal-check-text span{
+background-color: #404BBF;
+}
