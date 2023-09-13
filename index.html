@@ -46,9 +46,14 @@
     <main>
         
 <!-- Modal-icon -->
-<form name="contact_form" autocomplete="off" novalidate>
+<form name="contact_form" autocomplete="off" novalidate class="form">
     <div data-modal class="backdrop is-hidden">
         <div class="modal">
+            <button class="close-btn">
+                <svg class="close-btn-icon" width="24" height="24" aria-label="modal close icon">
+                    <use> href="./images/icons.svg#icon-close-black" </use>
+                </svg>
+            </button>
             <p>
                 Leave your contacts and we will call you back</p>
             <label class="form-label">
@@ -72,16 +77,16 @@
               id="policy" 
               name="policy" 
               value="true" 
-              class="modal-check"
+              class="modal-check visually-hidden"
               />
-              <label for="policy" class="modal-check-text" width="10px" height="10px">
+              <label for="policy" class="modal-check-text" width="13px" height="13px">
                 <span> <svg class="check-icon"> 
-                    <use href="./images/icons.svg#icon-Property-1click"></use>
+                    <use href="./images/icons.svg#icon-checkmark"></use>
                 </svg>
             </span>
-                I accept the terms and conditions of the <a class="modal-check-link" href="#">Privacy Policy</a>
+                I accept the terms and conditions of the <a class="modal-check-link" href="#"> Privacy Policy</a>
               </label>
-            <button data-modal-close>Закрыть</button>
+            <button data-modal-close>Send</button>
     </div>
 </div>
 </form>
@@ -451,6 +456,19 @@
             </li>
         </ul>
         </div>
+            <!-- Footer-form -->
+<div>
+    <form>
+        <label>
+            Subscribe
+            <input 
+            type="email" 
+            name="email"
+            placeholder="E-mail" />
+          </label>
+          <button>Subscribe</button>
+    </form>
+</div>
     </div>
     </footer>
     <script src="./modal.js"></script>
